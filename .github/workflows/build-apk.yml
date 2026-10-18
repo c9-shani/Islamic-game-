@@ -22,19 +22,17 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
-    - name: Set up Android SDK
-      uses: android-actions/setup-android@v3
-      with:
-        packages: 'platforms;android-36 build-tools;36.0.0'
-
-    - name: Accept Android SDK Licenses
+    - name: Setup Android SDK Platform 36
       run: |
+        echo "Accepting Android SDK Licenses..."
         yes | sdkmanager --licenses || true
+        echo "Installing Android SDK Platform 36..."
+        sdkmanager "platforms;android-36" "platform-tools" || true
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
-    - name: Prepare build environment
+    - name: Prepare environment
       run: |
         touch .env
         chmod +x gradlew
@@ -46,6 +44,6 @@ jobs:
       uses: actions/upload-artifact@v4
       if: success()
       with:
-        name: Islamic-History-Quest-APK
+        name: Islamic-History-Quest-Debug-APK
         path: app/build/outputs/apk/debug/*.apk
         retention-days: 14
