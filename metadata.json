@@ -1,0 +1,6 @@
+{
+  "name": "History Quest",
+  "description": "A realistic 3D Islamic open-world mission and adventure game with voice narration, Salah reminders, Sunnah ethics, and interactive quests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
